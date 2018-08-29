@@ -1,0 +1,16 @@
+body{
+    direction: rtl;    
+}
+
+a{
+    font-size: 5rem;
+}
+
+a>.btn{
+    font-size: 1.8rem;
+
+}
+
+#no-decoration{
+    text-decoration: none;
+}

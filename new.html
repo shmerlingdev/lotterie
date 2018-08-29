@@ -1,0 +1,55 @@
+<my-navbar></my-navbar>
+<section>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-6 mx-auto ">
+
+                <form class="form-signin ">
+
+                    <div class="form-row font-weight-bold">
+                        <label for="name">שם המוצר</label>
+                        <input type="text" id="name" ng-model="name" placeholder="מכונית חלל" class="form-control mb-2">
+                    </div>
+
+                    <div class="form-row font-weight-bold">
+                        <label for="description">תיאור המוצר</label>
+                        <textarea id="description" ng-model="description" maxlength="150" cols="30" rows="2" placeholder="תאר את המוצר" class="form-control mb-2"></textarea>
+                    </div>
+
+                    <div class="form-row font-weight-bold">
+
+                        <div class="col-sm-4 text-right">
+                            <label for="marketPrice">מחיר מחירון (ש"ח)</label>
+                            <input type="number" id="price" ng-model="marketPrice" placeholder='1500' class="form-control mb-2">
+                        </div>
+                        <div class="col-sm-4 text-right">
+                            <label>דמי השתתפות(ש"ח)</label>
+                            <input type="number" id="price"  placeholder='15' class="form-control mb-2" disabled>
+                        </div>
+                        <div class="col-sm-4 text-right">
+                                <label for="numberOfParticipants">מספר משתתפים</label>
+                                <input type="number" id="price" ng-model="numberOfParticipants" placeholder='100' class="form-control mb-2" >
+                            </div>
+
+                    </div>
+
+
+                    <div class="form-row font-weight-bold">
+                        <label for="img">תמונה</label>
+                        <input type="file" id="img" class="form-control-file mb-2">
+
+                    </div>
+
+                    <button class="btn btn-lg btn-primary btn-block mt-2" data-ng-disabled="myForm.$invalid" ng-click="myForm.$invalid=true;addLotterie()"
+                        type="button">הוסף</button>
+
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</section>

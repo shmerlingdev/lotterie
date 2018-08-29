@@ -1,0 +1,42 @@
+<my-navbar></my-navbar>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 mx-auto text-center mt-5">
+                <h4> בחר הגרלה ותן הצעה..</h4>
+                <div class="accordion" id="accordionExample">
+                    <div class="card" ng-repeat="lotterie in lotteries">
+                        <div class="card-header" id="{{lotterie.productName}}">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{lotterie.id}}" aria-expanded="true" aria-controls="{{lotterie.id}}">{{lotterie.productName}} </button>
+                            </h5>
+                        </div>
+
+                        <div id="{{lotterie.id}}" class="collapse " aria-labelledby="{{lotterie.productName}}" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <div class="col-sm-3 font-weight-bold ">תיאור המוצר:</div>
+                                    <div class="col-sm-9">{{lotterie.description}}</div>
+
+
+                                    <div class="col-sm-3 font-weight-bold ">מחיר מחירון:</div>
+                                    <div style="text-decoration: line-through;" class="col-sm-9">{{lotterie.marketPrice}}
+                                        <span>ש"ח</span>
+                                    </div>
+
+                                    <div class="col-sm-3 font-weight-bold ">דמי השתתפות:</div>
+                                    <div class="col-sm-9">{{lotterie.lotteriePrice}}
+                                        <span>ש"ח</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
