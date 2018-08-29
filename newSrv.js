@@ -1,18 +1,18 @@
 app.factory('newSrv', function ($q, $http) {
 
 
-    function addLotterie(productName, description, marketPrice, lotteriePrice, numberOfParticipants) {
+    function addLotterie(productName, description, marketPrice, numberOfParticipants) {
 
         var async = $q.defer();
 
-        var itemsUrl = 'https://json-server-heroku-qxmvaqtheh.now.sh';
+        var itemsUrl = 'https://json-server-heroku-qxmvaqtheh.now.sh/lotteries';
 
         var patch = {
             productName: productName,
             description: description,
             marketPrice: marketPrice,
-            lotteriePrice: lotteriePrice,
-            numberOfParticipants:numberOfParticipants
+            numberOfParticipants: numberOfParticipants,
+            // lotteriePrice: lotteriePrice
         }
 
         $http.post(itemsUrl, patch).then(function (response) {

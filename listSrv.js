@@ -1,11 +1,11 @@
 app.factory('listSrv', function ($q, $http) {
 
-    function Lotteries(productName, description, marketPrice, lotteriePrice, numberOfParticipants, image, sellerUserId, competitors, buyerUserId, isPaid, id) {
+    function Lotterie(productName, description, marketPrice, numberOfParticipants, lotteriePrice, image, sellerUserId, competitors, buyerUserId, isPaid, id) {
         this.productName = productName,
         this.description = description,
         this.marketPrice = marketPrice,
-        this.lotteriePrice = lotteriePrice,
-        this.numberOfParticipants = numberOfParticipants
+        this.numberOfParticipants = numberOfParticipants,
+        this.lotteriePrice =  this.marketPrice/this.numberOfParticipants,
         this.image = image,
         this.sellerUserId = sellerUserId,
         this.competitors = competitors,
@@ -18,14 +18,15 @@ app.factory('listSrv', function ($q, $http) {
 
         var lotteries = [];
         var async = $q.defer();
-        var itemsUrl = 'https://json-server-heroku-qxmvaqtheh.now.sh';
+        var itemsUrl = 'https://json-server-heroku-qxmvaqtheh.now.sh/lotteries';
 
         $http.get(itemsUrl).then(function (response) {
             
-            response.data.lotteries.forEach(function (lotterie) {
-                lotteries.push(new Lotteries(lotterie.productName, lotterie.description, lotterie.marketPrice, lotterie.lotteriePrice, lotterie.numberOfParticipants,
+            response.data.forEach(function (lotterie) {
+                lotteries.push(new Lotterie(lotterie.productName, lotterie.description, lotterie.marketPrice, lotterie.numberOfParticipants, lotterie.lotteriePrice, 
                                              lotterie.image, lotterie.sellerUserId, lotterie.competitors, lotterie.buyerUserId, lotterie.isPaid, lotterie.id));
             });
+            // console.log(lotteries);
             
             async.resolve(lotteries);
         }, function (response) {
@@ -37,7 +38,7 @@ app.factory('listSrv', function ($q, $http) {
 
 
     return {
-        Lotteries: Lotteries,
+        Lotterie: Lotterie,
         getAllLotteries: getAllLotteries
         }
 
