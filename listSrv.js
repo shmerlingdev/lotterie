@@ -18,7 +18,7 @@ app.factory('listSrv', function ($q, $http) {
 
         var lotteries = [];
         var async = $q.defer();
-        var itemsUrl = 'db.json';
+        var itemsUrl = 'https://json-server-heroku-qxmvaqtheh.now.sh';
 
         $http.get(itemsUrl).then(function (response) {
             

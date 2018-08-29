@@ -5,7 +5,7 @@ app.factory('newSrv', function ($q, $http) {
 
         var async = $q.defer();
 
-        var itemsUrl = 'db.json';
+        var itemsUrl = 'https://json-server-heroku-qxmvaqtheh.now.sh';
 
         var patch = {
             productName: productName,
