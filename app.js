@@ -4,17 +4,17 @@ app.config(function ($routeProvider) {
     $routeProvider
 
         .when('/', {
-            templateUrl: 'home.html'
+            templateUrl: 'home/home.html'
         })
 
         .when('/new', {
             templateUrl: 'new.html',
-            controller: 'newCtrl'
+            controller: 'new/newCtrl'
         })
 
         .when('/list', {
             templateUrl: 'list.html',
-            controller: 'listCtrl'
+            controller: 'list/listCtrl'
         })
        
         .otherwise({
