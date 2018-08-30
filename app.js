@@ -8,13 +8,13 @@ app.config(function ($routeProvider) {
         })
 
         .when('/new', {
-            templateUrl: 'new.html',
-            controller: 'new/newCtrl'
+            templateUrl: 'new/new.html',
+            controller: 'newCtrl'
         })
 
         .when('/list', {
-            templateUrl: 'list.html',
-            controller: 'list/listCtrl'
+            templateUrl: 'list/list.html',
+            controller: 'listCtrl'
         })
        
         .otherwise({
