@@ -8,11 +8,13 @@ app.config(function ($routeProvider) {
         })
 
         .when('/login', {
-            templateUrl: 'login/login.html'
+            templateUrl: 'login/login.html',
+            controller:'loginCtrl'
         })
 
         .when('/signup', {
-            templateUrl: 'signup/signup.html'
+            templateUrl: 'signup/signup.html',
+            controller: "signupCtrl"
         })
 
         .when('/new', {
