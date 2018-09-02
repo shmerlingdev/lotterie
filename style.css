@@ -1,9 +1,15 @@
-body{
+body,
+#inputName,
+#inputEmail,
+#inputPassword,
+#inputPasswordC,
+.r-t{
     direction: rtl;    
 }
 
-a{
-    font-size: 5rem;
+form{
+    direction: ltr;    
+  
 }
 
 a>.btn{
@@ -13,4 +19,17 @@ a>.btn{
 
 #no-decoration{
     text-decoration: none;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
+    background-image: url("/img/1.jpg");
+    height: 90%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

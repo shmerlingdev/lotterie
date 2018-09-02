@@ -7,6 +7,14 @@ app.config(function ($routeProvider) {
             templateUrl: 'home/home.html'
         })
 
+        .when('/login', {
+            templateUrl: 'login/login.html'
+        })
+
+        .when('/signup', {
+            templateUrl: 'signup/signup.html'
+        })
+
         .when('/new', {
             templateUrl: 'new/new.html',
             controller: 'newCtrl'
