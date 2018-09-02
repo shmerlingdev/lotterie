@@ -1,11 +1,11 @@
-app.factory('loginSrv', function ($q, $http) {
+app.factory('loginSrv', function ($http, $q) {
 
     var activeUser = null;
 
-    function User(name, email, password) {
-            this.name = name,
-            this.email = email,
-            this.password = password
+    function User(plainUser) {
+            this.name = plainUser.name;
+            this.email = plainUser.email;
+            this.password = plainUser.password;
     }
 
     function isLoggedIn() {
@@ -16,9 +16,9 @@ app.factory('loginSrv', function ($q, $http) {
         activeUser = null;
     }
 
-    function login() {
+    function login(email, password) {
         var async = $q.defer();
-        var loginUrl = 'https://json-server-heroku-qxmvaqtheh.now.sh/users';
+        var loginUrl = 'https://json-server-heroku-qxmvaqtheh.now.sh' + '/users?email=' + email + "&password=" + password;
 
         $http.get(loginUrl).then(function (response) {
             
@@ -26,7 +26,7 @@ app.factory('loginSrv', function ($q, $http) {
                 activeUser = new User(response.data[0]);
                 async.resolve(activeUser)
             } else {
-                async.reject('ivalid Credentials')
+                async.reject('invalid Credentials');
             }
         }, function (err) {
             async.reject(err)
@@ -39,11 +39,11 @@ app.factory('loginSrv', function ($q, $http) {
     }
 
     return {
-        activeUser: activeUser,
+        login: login,
         isLoggedIn: isLoggedIn,
         logout: logout,
-        login: login,
-        getActiveUser: getActiveUser
+        getActiveUser: getActiveUser,
+        activeUser: activeUser
     }
 });
 
