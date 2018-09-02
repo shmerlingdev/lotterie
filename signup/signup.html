@@ -17,7 +17,7 @@
                                 <label for="inputPasswordC" class="sr-only">confirm Password</label>
                                 <input type="password"  id="inputPasswordC" class="form-control my-1" placeholder="שוב סיסמה" required>
                                 
-                                <button class="btn btn-lg btn-primary my-3 btn-block" ng-click="addUser()" type="submit">אשר</button>
+                                <button class="btn btn-lg btn-primary my-3 btn-block" data-ng-disabled="myForm.$invalid" ng-click="myForm.$invalid=true;addUser()" type="submit">אשר</button>
                             </form>
             
                 </form>

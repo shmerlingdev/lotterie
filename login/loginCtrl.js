@@ -1,5 +1,7 @@
 app.controller('loginCtrl', function ($scope, $location, loginSrv) {
 
+
+    
     $scope.isLogged = function () {
         return loginSrv.isLoggedIn()
     }
