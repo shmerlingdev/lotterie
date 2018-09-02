@@ -1,4 +1,4 @@
-app.controller('newCtrl', function ($scope, newSrv, $location) {
+app.controller('newCtrl', function ($scope, newSrv, $location, loginSrv) {
 
     $scope.productName = '';
     $scope.description = '';
@@ -6,7 +6,15 @@ app.controller('newCtrl', function ($scope, newSrv, $location) {
     $scope.numberOfParticipants = '';
 
 
-    
+    $scope.isLogged = function () {
+        return loginSrv.isLoggedIn()
+    }
+
+    $scope.logout = function () {
+        loginSrv.logout();
+        $location.path('/');
+    }
+
 
     $scope.addLotterie = function () {
 

@@ -1,4 +1,9 @@
-app.controller('signupCtrl', function ($scope, $location, signupSrv) {
+app.controller('signupCtrl', function ($scope, $location, signupSrv, loginSrv) {
+
+
+    $scope.isLogged = function () {
+        return loginSrv.isLoggedIn()
+    }
 
     $scope.fullName = '';
     $scope.email = '';

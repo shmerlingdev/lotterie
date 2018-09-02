@@ -1,4 +1,4 @@
-app.controller('listCtrl', function ($scope, listSrv) {
+app.controller('listCtrl', function ($scope, listSrv, loginSrv, $location) {
 
     $scope.lotteries = [];
 
@@ -7,5 +7,16 @@ app.controller('listCtrl', function ($scope, listSrv) {
         $scope.lotteries = lotteries;
 
     })
+
+
+    $scope.isLogged = function () {
+        return loginSrv.isLoggedIn()
+    }
+
+    $scope.logout = function () {
+        loginSrv.logout();
+        $location.path('/');
+    }
+
 
 });

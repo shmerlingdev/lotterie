@@ -4,17 +4,25 @@ app.config(function ($routeProvider) {
     $routeProvider
 
         .when('/', {
-            templateUrl: 'home/home.html'
+            templateUrl: 'home/home.html',
+            controller: 'navbarCtrl'
         })
 
-        .when('/login', {
-            templateUrl: 'login/login.html',
-            controller:'loginCtrl'
+        .when('/options', {
+            templateUrl: 'options/options.html',
+            controller: 'navbarCtrl'
+
         })
 
         .when('/signup', {
             templateUrl: 'signup/signup.html',
             controller: "signupCtrl"
+
+        })
+
+        .when('/login', {
+            templateUrl: 'login/login.html',
+            controller: 'loginCtrl'
         })
 
         .when('/new', {
@@ -26,7 +34,7 @@ app.config(function ($routeProvider) {
             templateUrl: 'list/list.html',
             controller: 'listCtrl'
         })
-       
+
         .otherwise({
             redirectTo: '/'
         });
