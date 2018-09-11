@@ -8,7 +8,8 @@
                     <div class="card" ng-repeat="lotterie in lotteries">
                         <div class="card-header" id="{{lotterie.productName}}">
                             <h5 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{lotterie.id}}" aria-expanded="true" aria-controls="{{lotterie.id}}">{{lotterie.productName}}
+                                <button id="isSeen" class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{lotterie.id}}" 
+                                aria-expanded="false" aria-controls="{{lotterie.id}}">{{lotterie.productName}}
                                 </button>
                             </h5>
                         </div>
@@ -24,18 +25,17 @@
 
                                     <div class="col-sm-4">{{lotterie.description}}</div>
 
-                                    <div style="text-decoration: line-through;" class="col-sm-4">{{lotterie.marketPrice}}
+                                    <div style="text-decoration: line-through;" class="col-sm-4">{{lotterie.marketPrice | number}}
                                         <span>ש"ח</span>
                                     </div>
 
-                                    <div class="col-sm-4">{{lotterie.lotteriePrice}}
+                                    <div class="col-sm-4">{{lotterie.lotteriePrice | number}}
                                         <span>ש"ח</span>
                                     </div>
 
                                     <div class="col-sm-12 mx-auto my-3">
-                                        <button type="button" class="btn btn-warning font-weight-bold ">תן הצעה</button>
+                                        <a type="button" class="btn btn-warning font-weight-bold" data-ng-disabled="myForm.$invalid" ng-click="myForm.$invalid=true;countMeIn($index)">תן הצעה</a>
                                     </div>
-
 
 
                                 </div>

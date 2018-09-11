@@ -3,9 +3,11 @@ app.factory('loginSrv', function ($http, $q) {
     var activeUser = null;
 
     function User(plainUser) {
-            this.name = plainUser.name;
-            this.email = plainUser.email;
-            this.password = plainUser.password;
+        this.name = plainUser.name;
+        this.email = plainUser.email;
+        this.password = plainUser.password;
+        this.id = plainUser.id;
+
     }
 
     function isLoggedIn() {
@@ -21,9 +23,11 @@ app.factory('loginSrv', function ($http, $q) {
         var loginUrl = 'https://json-server-heroku-qxmvaqtheh.now.sh' + '/users?email=' + email + "&password=" + password;
 
         $http.get(loginUrl).then(function (response) {
-            
+
             if (response.data.length > 0) {
                 activeUser = new User(response.data[0]);
+                // sellerId = activeUser.id;
+                 
                 async.resolve(activeUser)
             } else {
                 async.reject('invalid Credentials');
@@ -45,6 +49,7 @@ app.factory('loginSrv', function ($http, $q) {
         getActiveUser: getActiveUser,
         activeUser: activeUser
     }
+
 });
 
 

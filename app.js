@@ -10,8 +10,7 @@ app.config(function ($routeProvider) {
 
         .when('/options', {
             templateUrl: 'options/options.html',
-            controller: 'navbarCtrl'
-
+            controller: 'newCtrl'
         })
 
         .when('/signup', {
