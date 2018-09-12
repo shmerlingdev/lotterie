@@ -35,14 +35,30 @@ app.factory('listSrv', function ($http, $q, loginSrv) {
         return async.promise;
     }
 
-    var competitor = []
-    function countMeIn(idxOfLotterie) {
+    function getAllCompetitors(idxOfLotterie){
+        var async = $q.defer();
+        var itemsUrl = 'https://json-server-heroku-qxmvaqtheh.now.sh/lotteries/' + idxOfLotterie
+        $http.get(itemsUrl).then(function (lotterie) {
+            
+            async.resolve(lotterie.data['competitors']);
+        }, function (err) {
+            async.reject(err);
+        });
+        return async.promise;
+    };
+
+
+    function countMeIn(idxOfLotterie, competitors) {
+
+
+        var competitors = competitors
         var async = $q.defer();
         var itemsUrl = 'https://json-server-heroku-qxmvaqtheh.now.sh/lotteries/' + idxOfLotterie
         var userId = loginSrv.getActiveUser().id
-        competitor.push(userId)
+
+        competitors.push(userId)
         var patch = {
-            competitors: competitor
+            competitors: competitors
         }
 
         $http.patch(itemsUrl, patch).then(function (response) {
@@ -57,7 +73,8 @@ app.factory('listSrv', function ($http, $q, loginSrv) {
     return {
         Lotterie: Lotterie,
         getAllLotteries: getAllLotteries,
-        countMeIn: countMeIn
+        countMeIn: countMeIn,
+        getAllCompetitors: getAllCompetitors
     }
 
 });

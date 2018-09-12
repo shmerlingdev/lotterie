@@ -20,31 +20,31 @@ app.controller('listCtrl', function ($scope, listSrv, loginSrv, $location, $log)
 
     });
 
-    $scope.competitorsId = []
+
+
 
     $scope.countMeIn = function ($index) {
 
-        listSrv.countMeIn($index).then(function (competitorsId) {
+        listSrv.getAllCompetitors($index).then(function (competitors) {
 
-            // $scope.competitorsId = competitorsId 
+            $scope.competitorsId = competitors
+            console.log($scope.competitorsId);
+            
+
+            listSrv.countMeIn($index, $scope.competitorsId).then(function (competitorsId) {
+
+
+            }, function (error) {
+                $log.error(error)
+            });
 
         }, function (error) {
             $log.error(error)
         });
 
 
-        // listSrv.countMeIn($scope.competitors).then(function (competitor) {
-
-        //     // $location.path('/Approvment');
-
-        // }, function (error) {
-        //     $log.error(error)
-        // });
 
 
-    }
-
-
-
+    };
 
 });
