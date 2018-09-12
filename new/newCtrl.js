@@ -1,4 +1,4 @@
-app.controller('newCtrl', function ($scope, newSrv, $location, loginSrv) {
+app.controller('newCtrl', function ($scope, newSrv, $location, loginSrv, listSrv) {
 
     if (!loginSrv.isLoggedIn()) {
         $location.path('/');
@@ -11,8 +11,11 @@ app.controller('newCtrl', function ($scope, newSrv, $location, loginSrv) {
     $scope.lotteriePrice =  function(){
         return $scope.marketPrice/$scope.numberOfParticipants
     };
-    $scope.sellerUserId = loginSrv.getActiveUser().id
+    $scope.sellerUserId = loginSrv.getActiveUser().id;
     $scope.competitors = [];
+    $scope.complete =  function(){
+        return parseInt(((($scope.competitors.length) / $scope.numberOfParticipants) * 100))
+    };
 
 
     $scope.isLogged = function () {
@@ -28,7 +31,7 @@ app.controller('newCtrl', function ($scope, newSrv, $location, loginSrv) {
     $scope.addLotterie = function () {
 
         newSrv.addLotterie($scope.productName, $scope.description, $scope.marketPrice, $scope.numberOfParticipants, $scope.lotteriePrice(), $scope.sellerUserId,
-             $scope.competitors).then(function (newItem) {
+             $scope.competitors, $scope.complete()).then(function (newItem) {
             
             $location.path('/list');
 

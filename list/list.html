@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8 mx-auto text-center mt-5">
-                <h4> בחר הגרלה ותן הצעה</h4>
+                <h4>בחר הגרלה</h4>
                 <div class="accordion" id="accordionExample">
                     <div class="card" ng-repeat="lotterie in lotteries">
                         <div class="card-header" id="{{lotterie.productName}}">
@@ -11,6 +11,7 @@
                                 <button id="isSeen" class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{lotterie.id}}" 
                                 aria-expanded="false" aria-controls="{{lotterie.id}}">{{lotterie.productName}}
                                 </button>
+
                             </h5>
                         </div>
 
@@ -33,9 +34,10 @@
                                         <span>ש"ח</span>
                                     </div>
 
-                                    <div class="col-sm-12 mx-auto my-3">
-                                        <a type="button" class="btn btn-warning font-weight-bold" data-ng-disabled="myForm.$invalid" ng-click="myForm.$invalid=true;countMeIn($index)">תן הצעה</a>
+                                    <div class="col-sm-12 mx-auto mt-3">
+                                        <a type="button" class="btn btn-warning font-weight-bold" data-ng-disabled="myForm.$invalid" ng-click="myForm.$invalid=true;getAndCount($index)">גם אני רוצה</a>
                                     </div>
+                                    <span class="text-muted mx-auto">{{lotterie.complete}}% משתתפים</span>
 
 
                                 </div>

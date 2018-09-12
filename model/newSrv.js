@@ -1,7 +1,7 @@
 app.factory('newSrv', function ($q, $http, loginSrv) {
 
 
-    function addLotterie(productName, description, marketPrice, numberOfParticipants, lotteriePrice ,sellerUserId, competitors) {
+    function addLotterie(productName, description, marketPrice, numberOfParticipants, lotteriePrice ,sellerUserId, competitors, complete) {
 
         var async = $q.defer();
 
@@ -14,7 +14,8 @@ app.factory('newSrv', function ($q, $http, loginSrv) {
             numberOfParticipants: numberOfParticipants,
             lotteriePrice: lotteriePrice,
             sellerUserId: sellerUserId,
-            competitors: competitors
+            competitors: competitors,
+            complete: complete
         }
 
         $http.post(itemsUrl, patch).then(function (response) {

@@ -22,14 +22,11 @@ app.controller('listCtrl', function ($scope, listSrv, loginSrv, $location, $log)
 
 
 
-
-    $scope.countMeIn = function ($index) {
+    $scope.getAndCount = function ($index) {
 
         listSrv.getAllCompetitors($index).then(function (competitors) {
 
             $scope.competitorsId = competitors
-            console.log($scope.competitorsId);
-            
 
             listSrv.countMeIn($index, $scope.competitorsId).then(function (competitorsId) {
 
@@ -41,10 +38,5 @@ app.controller('listCtrl', function ($scope, listSrv, loginSrv, $location, $log)
         }, function (error) {
             $log.error(error)
         });
-
-
-
-
     };
-
 });
