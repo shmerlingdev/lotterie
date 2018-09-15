@@ -4,23 +4,22 @@ app.factory('listSrv', function ($http, $q, loginSrv) {
             this.description = description,
             this.marketPrice = marketPrice,
             this.numberOfParticipants = numberOfParticipants,
-            this.lotteriePrice = (this.marketPrice / this.numberOfParticipants).toFixed(0),
+            this.lotteriePrice = parseInt((this.marketPrice / this.numberOfParticipants).toFixed(0)),
             this.image = image,
             this.sellerUserId = sellerUserId,
             this.competitors = competitors,
             this.buyerUserId = buyerUserId,
             this.isPaid = isPaid,
-            this.complete = (((this.competitors.length) / this.numberOfParticipants) * 100).toFixed(0),
+            this.complete = parseInt((((this.competitors.length) / this.numberOfParticipants) * 100).toFixed(0)),
             this.id = id
     }
 
 
     function getAllLotteries() {
-
         var lotteries = [];
 
         var async = $q.defer();
-        var itemsUrl = 'https://json-server-heroku-qxmvaqtheh.now.sh/lotteries';
+        var itemsUrl = 'https://json-server-heroku-tnfiuafxno.now.sh/lotteries';
 
         $http.get(itemsUrl).then(function (response) {
 
@@ -28,9 +27,8 @@ app.factory('listSrv', function ($http, $q, loginSrv) {
 
                 lotteries.push(new Lotterie(lotterie.productName, lotterie.description, lotterie.marketPrice, lotterie.numberOfParticipants, lotterie.lotteriePrice,
                     lotterie.image, lotterie.sellerUserId, lotterie.competitors, lotterie.buyerUserId, lotterie.isPaid, lotterie.complete, lotterie.id));
-
-
             });
+
 
             async.resolve(lotteries);
         }, function (err) {
@@ -43,7 +41,7 @@ app.factory('listSrv', function ($http, $q, loginSrv) {
     function getAllCompetitors(idxOfLotterie) {
 
         var async = $q.defer();
-        var itemsUrl = 'https://json-server-heroku-qxmvaqtheh.now.sh/lotteries/' + idxOfLotterie
+        var itemsUrl = 'https://json-server-heroku-tnfiuafxno.now.sh/lotteries/' + idxOfLotterie
         $http.get(itemsUrl).then(function (lotterie) {
 
             async.resolve(lotterie.data['competitors']);
@@ -53,22 +51,17 @@ app.factory('listSrv', function ($http, $q, loginSrv) {
         return async.promise;
     };
 
-    function disableMyBtn(){
-        document.getElementsByTagName("button")[0].setAttribute("disabled", false); 
 
-    }
-
-
-    function countMeIn(idxOfLotterie, competitors) {
-        disableMyBtn()
+    function countMeIn(idxOfLotterie, competitors, completePercentage) {
         var competitors = competitors
         var async = $q.defer();
-        var itemsUrl = 'https://json-server-heroku-qxmvaqtheh.now.sh/lotteries/' + idxOfLotterie
+        var itemsUrl = 'https://json-server-heroku-tnfiuafxno.now.sh/lotteries/' + idxOfLotterie
         var userId = loginSrv.getActiveUser().id
-        competitors.push(userId)
+        competitors.push(userId);
 
         var patch = {
-            competitors: competitors
+            competitors: competitors,
+            complete: completePercentage
         }
 
         $http.patch(itemsUrl, patch).then(function (res) {
@@ -79,6 +72,7 @@ app.factory('listSrv', function ($http, $q, loginSrv) {
         });
         return async.promise;
     };
+
 
     return {
         Lotterie: Lotterie,

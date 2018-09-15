@@ -13,9 +13,8 @@ app.controller('newCtrl', function ($scope, newSrv, $location, loginSrv, listSrv
     };
     $scope.sellerUserId = loginSrv.getActiveUser().id;
     $scope.competitors = [];
-    $scope.complete =  function(){
-        return parseInt(((($scope.competitors.length) / $scope.numberOfParticipants) * 100))
-    };
+    $scope.complete =  0;
+    
 
 
     $scope.isLogged = function () {
@@ -31,7 +30,7 @@ app.controller('newCtrl', function ($scope, newSrv, $location, loginSrv, listSrv
     $scope.addLotterie = function () {
 
         newSrv.addLotterie($scope.productName, $scope.description, $scope.marketPrice, $scope.numberOfParticipants, $scope.lotteriePrice(), $scope.sellerUserId,
-             $scope.competitors, $scope.complete()).then(function (newItem) {
+             $scope.competitors, $scope.complete).then(function (newItem) {
             
             $location.path('/list');
 
