@@ -19,7 +19,7 @@ app.factory('listSrv', function ($http, $q, loginSrv) {
         var lotteries = [];
 
         var async = $q.defer();
-        var itemsUrl = 'https://json-server-heroku-tnfiuafxno.now.sh/lotteries';
+        var itemsUrl = 'https://json-server-heroku-pzqjawpbmu.now.sh/lotteries';
 
         $http.get(itemsUrl).then(function (response) {
 
@@ -41,7 +41,7 @@ app.factory('listSrv', function ($http, $q, loginSrv) {
     function getAllCompetitors(idxOfLotterie) {
 
         var async = $q.defer();
-        var itemsUrl = 'https://json-server-heroku-tnfiuafxno.now.sh/lotteries/' + idxOfLotterie
+        var itemsUrl = 'https://json-server-heroku-pzqjawpbmu.now.sh/lotteries/' + idxOfLotterie
         $http.get(itemsUrl).then(function (lotterie) {
 
             async.resolve(lotterie.data['competitors']);
@@ -55,7 +55,7 @@ app.factory('listSrv', function ($http, $q, loginSrv) {
     function countMeIn(idxOfLotterie, competitors, completePercentage) {
         var competitors = competitors
         var async = $q.defer();
-        var itemsUrl = 'https://json-server-heroku-tnfiuafxno.now.sh/lotteries/' + idxOfLotterie
+        var itemsUrl = 'https://json-server-heroku-pzqjawpbmu.now.sh/lotteries/' + idxOfLotterie
         var userId = loginSrv.getActiveUser().id
         competitors.push(userId);
 
