@@ -14,7 +14,7 @@ app.factory('listSrv', function ($http, $q, loginSrv) {
             this.id = id
     }
 
-
+    
     function getAllLotteries() {
         var lotteries = [];
 
@@ -73,7 +73,7 @@ app.factory('listSrv', function ($http, $q, loginSrv) {
         return async.promise;
     };
 
-
+   
     return {
         Lotterie: Lotterie,
         getAllLotteries: getAllLotteries,
