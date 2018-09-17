@@ -26,7 +26,7 @@
                                 <div class="row">
 
                                     <div class="col-sm-4 font-weight-bold ">תיאור המוצר:</div>
-                                    <div class="col-sm-4 font-weight-bold ">מחיר מחירון:</div>
+                                    <div class="col-sm-4 font-weight-bold ">מחיר שוק:</div>
                                     <div class="col-sm-4 font-weight-bold ">דמי השתתפות:</div>
 
                                     <div class="col-sm-4">{{lotterie.description}}</div>
@@ -48,54 +48,54 @@
 
                                 </div>
 
-<div>
+                                <div>
 
-                                <div class="col-sm-12 mx-auto mt-3" ng-hide='{{lotterie.complete}}==100'>
+                                    <div class="col-sm-12 mx-auto mt-3" ng-hide='{{lotterie.complete}}==100'>
 
-                                    <button type="button" class="btn btn-warning font-weight-bold" data-toggle="modal"
-                                        data-target=".{{lotterie.productName}}" ng-click="getAndCount($event, $index)">הצטרף</button>
+                                        <button type="button" class="btn btn-warning font-weight-bold" data-toggle="modal"
+                                            data-target=".{{lotterie.id}}" ng-click="getAndCount($event, $index)">הצטרף</button>
 
-                                </div>
+                                    </div>
 
-                                <span class="text-muted mx-auto">{{lotterie.complete}}% משתתפים</span>
+                                    <span class="text-muted mx-auto">{{lotterie.complete}}% משתתפים</span>
 
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade {{lotterie.productName}}" tabindex="-1" role="dialog" aria-labelledby="{{lotterie.id}}"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="{{lotterie.id}}">{{lotterie.productName}}</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <span class="text-muted">בחרת להשתתף בהגרלה על</span>
-                                    <span class="text-muted">{{lotterie.productName}}</span>
-                                    <span class="text-muted">במחיר של</span>
-                                    <span class="text-muted">{{lotterie.lotteriePrice | number}} ש"ח.</span>
-                                    <p></p>
-                                    <span class="text-muted"> לחץ על PayPal על מנת לשלם.</span>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary mx-1" data-dismiss="modal">ביטול</button>
-                                    <button type="button" class="btn btn-primary">PayPal</button>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade {{lotterie.id}}" tabindex="-1" role="dialog" "
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" >{{lotterie.productName}}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <span class="text-muted">בחרת להשתתף בהגרלה על</span>
+                                        <span class="text-muted">{{lotterie.productName}}</span>
+                                        <span class="text-muted">במחיר של</span>
+                                        <span class="text-muted">{{lotterie.lotteriePrice | number}} ש"ח.</span>
+                                        <p></p>
+                                        <span class="text-muted"> לחץ על PayPal על מנת לשלם.</span>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary mx-1" data-dismiss="modal">ביטול</button>
+                                        <button type="button" class="btn btn-primary">PayPal</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
-
-
                 </div>
             </div>
         </div>
-    </div>
 
-</div>
+    </div>
 
 
 </section>

@@ -64,7 +64,7 @@ app.controller('listCtrl', function ($scope, listSrv, loginSrv, $location, $log)
                 $scope.competitorsId = competitors
 
                 listSrv.countMeIn(index, $scope.competitorsId, $scope.completePercentage).then(function () {
-                    
+
                     btn.target.disabled = true;
 
                 }, function (error) {

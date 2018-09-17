@@ -33,3 +33,7 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.spl{
+    letter-spacing: 1px;
+}
